@@ -1,11 +1,25 @@
 {
   "name": "Query user",
   "description": "Queries a user and retrieves its related information, such as the wallet, the label access control, or the current XP.",
-  "ubiquity:listeners": [ "issue_comment.created" ],
+  "ubiquity:listeners": [
+    "issue_comment.created"
+  ],
   "commands": {
     "query": {
       "ubiquity:example": "/query @ubiquibot",
       "description": "Returns the user's wallet, access, and multiplier information."
     }
+  },
+  "configuration": {
+    "type": "object",
+    "properties": {
+      "allowPublicQuery": {
+        "default": true,
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "allowPublicQuery"
+    ]
   }
 }
