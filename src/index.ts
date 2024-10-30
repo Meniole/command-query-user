@@ -11,8 +11,11 @@ import { PluginSettings, pluginSettingsSchema } from "./types/plugin-input";
 
 export default {
   async fetch(request: Request, env: Env, executionContext: ExecutionContext) {
+    const toTime = Date.now() + 60000;
+    const fromTime = Date.now();
+    const timeParam = encodeURIComponent(`{"type":"absolute","to":${toTime},"from":${fromTime}}`);
     console.log(
-      `https://dash.cloudflare.com/${env.CLOUDFLARE_ACCOUNT_ID}/workers/services/view/${env.CLOUDFLARE_WORKER_NAME}/production/observability/logs?granularity=0&time=%7B"type"%3A"absolute"%2C"to"%3A${Date.now() + 60000}%2C"from"%3A${Date.now()}%7D`
+      `https://dash.cloudflare.com/${env.CLOUDFLARE_ACCOUNT_ID}/workers/services/view/${env.CLOUDFLARE_WORKER_NAME}/production/observability/logs?granularity=0&time=${timeParam}`
     );
     return createPlugin<PluginSettings, Env, SupportedEvents>(
       (context) => {
