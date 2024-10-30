@@ -14,6 +14,7 @@ export default {
     const toTime = Date.now() + 60000;
     const fromTime = Date.now();
     const timeParam = encodeURIComponent(`{"type":"absolute","to":${toTime},"from":${fromTime}}`);
+
     console.log(
       `https://dash.cloudflare.com/${env.CLOUDFLARE_ACCOUNT_ID}/workers/services/view/${env.CLOUDFLARE_WORKER_NAME}/production/observability/logs?granularity=0&time=${timeParam}`
     );
