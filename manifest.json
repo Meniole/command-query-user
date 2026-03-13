@@ -23,7 +23,9 @@
       }
     }
   },
-  "ubiquity:listeners": [],
+  "ubiquity:listeners": [
+    "issue_comment.created"
+  ],
   "skipBotEvents": true,
   "configuration": {
     "type": "object",
@@ -34,5 +36,6 @@
         "type": "boolean"
       }
     }
-  }
+  },
+  "homepage_url": "https://meniole-command-query.deno.dev"
 }
