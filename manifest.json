@@ -34,6 +34,5 @@
         "type": "boolean"
       }
     }
-  },
-  "homepage_url": "https://meniole-command-query.deno.dev"
+  }
 }

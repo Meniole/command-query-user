@@ -20,8 +20,8 @@
     "prepare": "bun run prepare:manifest && husky install",
     "supabase:generate:local": "supabase gen types typescript --local > src/types/database.ts",
     "supabase:generate:remote": "cross-env-shell \"supabase gen types typescript --project-id $SUPABASE_PROJECT_ID --schema public > src/types/database.ts\"",
-    "test": "cross-env NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --setupFiles dotenv/config --coverage",
-    "prepare:manifest": "MANIFEST_PATH=${MANIFEST_PATH:-manifest.json} GITHUB_WORKSPACE=${GITHUB_WORKSPACE:-.} GITHUB_REPOSITORY=${GITHUB_REPOSITORY:-local/${npm_package_name:-plugin}} GITHUB_REF_NAME=${GITHUB_REF_NAME:-local} bunx @ubiquity-os/plugin-manifest-tool@latest",
+    "test": "jest --setupFiles dotenv/config --coverage",
+    "prepare:manifest": "bunx @ubiquity-os/plugin-manifest-tool@latest",
     "predev": "bun run prepare:manifest"
   },
   "keywords": [
@@ -35,7 +35,7 @@
     "@octokit/rest": "^20.1.0",
     "@sinclair/typebox": "0.34.41",
     "@supabase/supabase-js": "2.43.2",
-    "@ubiquity-os/plugin-sdk": "^3.9.0",
+    "@ubiquity-os/plugin-sdk": "3.12.5",
     "@ubiquity-os/ubiquity-os-logger": "^1.4.0",
     "commander": "12.1.0",
     "hono": "^4.11.3"
@@ -49,6 +49,7 @@
     "@eslint/js": "9.14.0",
     "@jest/globals": "29.7.0",
     "@mswjs/data": "0.16.1",
+    "@swc/jest": "^0.2.39",
     "@types/jest": "29.5.12",
     "@types/node": "^20.11.19",
     "@typescript-eslint/eslint-plugin": "^8.19.0",
@@ -71,7 +72,6 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "supabase": "1.167.4",
-    "ts-jest": "29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "5.6.2",
     "typescript-eslint": "^8.19.0",
